@@ -1,0 +1,35 @@
+<!-- Main component for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <h1>Weather Data For {{cityName}}</h1>
+  <form>
+      <select [(ngModel)] = "cityName" #city = "ngModel" name="cityNameField" class="form-control" (ngModelChange) = "updateWeather()">
+        <option *ngFor="let abc of cityArray">{{abc}}</option>
+      </select>
+    </form>
+    <table class="table table-bordered">
+  
+    <thead>
+      <tr>
+        <th> Cords </th>
+        <th>Description</th>
+        <th>Visibility</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- pull data only the data is available -->
+      <tr *ngIf="weatherData" >
+        <td>{{weatherData.coord.lat}}. {{weatherData.coord.lon}}</td>
+        <td>{{weatherData.weather[0]. description}}</td> 
+        <!-- because weather an arry -->
+        <td>{{weatherData.visibility}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div ng-app="">
+      <form >
+        Enter City Name: <input type="text" (keyup)='onNameKey($event)'>
+        <button (click)='getNewWeather()'>Submit</button>
+      </form>  
+    </div>
+  
+</div>
