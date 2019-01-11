@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['./'])
     this.authService.login(this.user['email'], this.user['password']).subscribe((data)=>{ 
       console.log(data);
-      alert('correct response')
+      // alert('correct response')
 
       this.lStorage.add(Constants.USER_LOGGED_IN_KEY,true);
       // this.lStorage.add('USER_LOGGED_IN_KEY', true);

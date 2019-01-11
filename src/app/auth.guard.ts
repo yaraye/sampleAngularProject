@@ -3,6 +3,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Observable } from 'rxjs';
 //when user is distracted from the login so they don't loss there data
 import{LocalStorageService} from 'angular-2-local-storage';
+import {Constants} from './shared/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +15,21 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      console.log(this.lStore.get('isUserLoggedIn'));
-      if (this.lStore.get('isUserLoggedIn')){
+    if (state.url === '/login') {
+    } else {
+      if (this.lStore.get(Constants.USER_LOGGED_IN_KEY)) {
         return true;
-      }else {
+      } else {
         this.callLoginPage();
       }
+    }
   }
-  //redirect to login page
-  callLoginPage(){
-    alert('please login first');
-    this.route.navigate['/login'];
+
+  callLoginPage() {
+    // alert('Please login first');
+    this.route.navigate(['/login']);
   }
 }
+
+
+
