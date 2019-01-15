@@ -22,8 +22,7 @@ export class LoginComponent implements OnInit {
     this.user = {
       'email': '',
       'password': ''
-    };
-    console.log('i am in user constructor');
+    }
   }
 
   ngOnInit() {
@@ -31,10 +30,10 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin() {
-    console.log(this.user);
+    // console.log(this.user);
     this.router.navigate(['./'])
     this.authService.login(this.user['email'], this.user['password']).subscribe((data)=>{ 
-      console.log(data);
+      // console.log(data);
       // alert('correct response')
 
       this.lStorage.add(Constants.USER_LOGGED_IN_KEY,true);

@@ -9,11 +9,13 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import{LocalStorageModule} from 'angular-2-local-storage';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+  
   ],
   imports: [
     BrowserModule,
